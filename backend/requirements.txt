@@ -1,0 +1,22 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+sqlalchemy[asyncio]==2.0.35
+aiosqlite==0.20.0
+alembic==1.13.3
+pydantic==2.9.2
+pydantic-settings==2.5.2
+python-jose[cryptography]==3.3.0
+# 【发布缺漏修复】core/security.py 直接 `import bcrypt`，但此前没声明。
+# 本机 venv 里恰好装过所以一直没暴露，换台干净机器/托管沙箱装完 requirements
+# 会在 import 期就 ModuleNotFoundError —— 系统起不来。
+bcrypt==5.0.0
+httpx==0.27.2
+python-dotenv==1.0.1
+beautifulsoup4==4.12.3
+# 【实战话术·录音】python-multipart 曾被删掉（当时全项目没有文件上传路由）。
+# 现在 live.py 的录音上传走 multipart/form-data，FastAPI 在**定义路由时**就要求它存在，
+# 缺了会在 import 期直接报 RuntimeError（不是运行到那一步才报），必须装回来。
+python-multipart==0.0.9
+# 【P2-3 修复】1) 新增 beautifulsoup4：/knowledge/import-urls 硬依赖 bs4，原先未声明，
+#    新环境部署后批量导入必 500；2) 删除 passlib：core/security.py 直接用 bcrypt，
+#    passlib 从未被引用（且与 bcrypt 5.x 不兼容）。

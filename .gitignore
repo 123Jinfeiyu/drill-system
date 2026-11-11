@@ -1,0 +1,39 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- Node / 前端构建 ----
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+build/
+
+# ---- 本地凭据与数据 ----
+.login.json
+.env
+*.db
+*.sqlite3
+*.log
+
+# ---- 运行期生成 ----
+backend/audio/
+backend/uploads/
+backend/.cache/
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 业务原始资料（含公司内部信息，不入公开仓库）
+客服话术总库.xlsx
+桔多多融合业务.docx
